@@ -6,6 +6,8 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 20
+    commit-message:
+      prefix: "chore: "
     ignore:
       # Let backstage-cli do these version bumps
       - dependency-name: '@backstage*'
