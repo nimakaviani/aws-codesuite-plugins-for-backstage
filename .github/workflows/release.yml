@@ -62,6 +62,7 @@ jobs:
       - name: Publish new version to GitHub
         if: ${{ env.COMMITS_TO_RELEASE != 0 }}
         run: |
+          ls -la
           yarn bump-version
           NEW_VERSION=$(cat lerna.json | jq -r '.version')
           GIT_COMMIT_ID=$(git rev-parse HEAD)
