@@ -1,6 +1,7 @@
 {
-  "name": "plugin-backstage-code-star",
-  "version": "0.0.1",
+  "name": "aws-codesuite-plugins-for-backsatge",
+  "description": "AWS CodeSuite Plugins for Backstage",
+  "version": "0.0.0",
   "main": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "license": "Apache-2.0",
@@ -30,7 +31,8 @@
     "prepack": "backstage-cli prepack",
     "postpack": "backstage-cli postpack",
     "clean": "backstage-cli clean",
-    "ci": "tsc && yarn build && yarn test --watch false && yarn lint"
+    "ci": "tsc && yarn build && yarn test --watch false && yarn lint",
+    "tsc": "tsc"
   },
   "jest": {
     "testEnvironment": "jsdom"
