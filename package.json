@@ -33,7 +33,7 @@
     "clean": "backstage-cli clean",
     "ci": "tsc && yarn build && yarn test --watch false && yarn lint",
     "tsc": "tsc",
-    "bump-version": "lerna version"
+    "bump-version": "lerna version minor --loglevel debug"
   },
   "jest": {
     "testEnvironment": "jsdom"
