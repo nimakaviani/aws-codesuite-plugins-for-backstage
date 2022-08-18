@@ -32,8 +32,7 @@
     "postpack": "backstage-cli postpack",
     "clean": "backstage-cli clean",
     "ci": "tsc && yarn build && yarn test --watch false && yarn lint",
-    "tsc": "tsc",
-    "bump-version": "lerna version minor --loglevel debug"
+    "tsc": "tsc"
   },
   "jest": {
     "testEnvironment": "jsdom"
