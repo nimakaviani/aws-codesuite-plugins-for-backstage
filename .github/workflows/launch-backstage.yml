@@ -1,0 +1,44 @@
+name: Launch Backstage
+
+on:
+  push:
+    branches: [ master, build-container ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - uses: actions/checkout@v3
+      with:
+        path: backstage-plugin
+
+    - name: Locally Publish Plugin
+      run: |
+        cd backstage-plugin
+        yarn install
+        npm pack
+
+    - uses: actions/checkout@v3
+      with:
+        repository: nimakaviani/backstage
+        ref: master
+        path: backstage
+
+    - name: dockerize
+      env:
+        NODE_OPTIONS: "--max_old_space_size=4096"
+      run: |
+        cd backstage
+        echo $PWD
+        ls -la
+        yarn install
+        yarn tsc
+        yarn build
+        docker build -t nimak/backstage:1.0.0 -f packages/backend/Dockerfile .
+        cat package.json | jq .
